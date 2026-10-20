@@ -25,11 +25,12 @@ Chrome was automated against the actual Laravel server with MySQL records, not a
 ## Docker and live deployment: not performed
 
 - Docker was unavailable in this environment. The Dockerfile, Apache configuration, startup script, and Render Blueprint were authored and reviewed, but an image was **not built or run** here.
-- A GitHub Actions workflow now builds/runs the production image and separately tests against MySQL. Its remote result must be checked after pushing; it is not counted as a local Docker result.
+- **Remote Docker verification passed on GitHub Actions** for commit `7fd268c`: the production image built and started, Apache served `/`, `/about`, `/up` and the stylesheet, security headers were present, and an unavailable database produced the expected 503 page. This is a remote CI Docker result, not a local image run or a live Render deployment.
+- The initial remote PHPUnit job exposed an unused empty Unit-suite directory reference that was not retained by Git. That reference was removed; the final fresh-checkout MySQL workflow result must be checked on the latest commit.
 - Render/Clever Cloud account access and connection credentials were not supplied. No services were provisioned, no remote migrations were run, and no live URL or live persistence result is claimed.
 - Current official provider documentation was checked for the required plans. Account-specific zero-cost availability/billing and DEV database TLS/CA remain to be confirmed. The README documents the TLS checkpoint and exact account/deployment actions.
 - Source/image-context secret exclusions are present. Actual built-image inspection, live response/log inspection, HTTPS verification, Render restart persistence, and final free-plan confirmation remain part of the deployment checklist.
 
 ## Evidence files
 
-The adjacent `../review/` folder contains captured desktop/mobile screenshots and machine-readable browser/contrast results. These are local verification evidence, not hosted deployment screenshots.
+Representative desktop/mobile captures are included in `docs/screenshots/`. The local deliverable's adjacent `../review/` folder contains all captured page screenshots and machine-readable browser/contrast results. These are local verification evidence, not hosted deployment screenshots.

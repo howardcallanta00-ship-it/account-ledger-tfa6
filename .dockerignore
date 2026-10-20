@@ -6,6 +6,8 @@ vendor
 node_modules
 tests
 work
+docs
+.github
 *.zip
 *.pem
 *.key

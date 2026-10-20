@@ -4,6 +4,10 @@
 
 A read-only Laravel 12 / Blade / MySQL directory for small-store staff. Customer and user records come from Eloquent. All seeded names and contact details are fictional. The application has no authentication, writes, payments, inventory, or uploads.
 
+![Customer directory with a compact navigation rail, ruled records and aligned contact details](docs/screenshots/customers-desktop.png)
+
+[View the mobile layout](docs/screenshots/customers-mobile.png) · [Deployment walkthrough](DEPLOYMENT.md) · [Verification details](VERIFICATION.md)
+
 ## Design and scope
 
 Three approaches were considered: **Account ledger** (navigation rail and ruled records), **Retail counter** (horizontal navigation and receipt typography), and **Directory index** (split editorial layout and large names). Account ledger was selected for repeated browsing.
