@@ -128,7 +128,11 @@ class DirectoryTest extends TestCase
 
     public function test_https_proxy_and_no_write_routes(): void
     {
-        $this->withHeaders(['X-Forwarded-Proto' => 'https'])->get('/')->assertSee('https://localhost/assets/ledger.css', false);
+        $this->withHeaders([
+            'X-Forwarded-Proto' => 'https',
+            'X-Forwarded-Host' => 'ledger.example',
+            'X-Forwarded-Port' => '443',
+        ])->get('/')->assertSee('https://ledger.example/assets/ledger.css', false);
         $this->post('/customers')->assertStatus(405);
         $this->get('/customers/create')->assertNotFound();
     }

@@ -26,7 +26,7 @@ Chrome was automated against the actual Laravel server with MySQL records, not a
 
 - Docker was unavailable in this environment. The Dockerfile, Apache configuration, startup script, and Render Blueprint were authored and reviewed, but an image was **not built or run** here.
 - **Remote Docker verification passed on GitHub Actions** for commit `7fd268c`: the production image built and started, Apache served `/`, `/about`, `/up` and the stylesheet, security headers were present, and an unavailable database produced the expected 503 page. This is a remote CI Docker result, not a local image run or a live Render deployment.
-- The initial remote PHPUnit job exposed an unused empty Unit-suite directory reference that was not retained by Git. That reference was removed; the final fresh-checkout MySQL workflow result must be checked on the latest commit.
+- CI checks also cover fresh-checkout test discovery and forwarded HTTPS host/port handling independently of the local `APP_URL`. Check the latest workflow result for the final remote MySQL run.
 - Render/Clever Cloud account access and connection credentials were not supplied. No services were provisioned, no remote migrations were run, and no live URL or live persistence result is claimed.
 - Current official provider documentation was checked for the required plans. Account-specific zero-cost availability/billing and DEV database TLS/CA remain to be confirmed. The README documents the TLS checkpoint and exact account/deployment actions.
 - Source/image-context secret exclusions are present. Actual built-image inspection, live response/log inspection, HTTPS verification, Render restart persistence, and final free-plan confirmation remain part of the deployment checklist.
